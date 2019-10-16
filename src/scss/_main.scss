@@ -1,0 +1,179 @@
+body {
+  background: $main-bg;
+}
+
+h1 {
+  color: $main-darkcyan;
+  font-size: 40px;
+  font-family: $pt-serif;
+  margin-bottom: 32px;
+  margin-top: 52px;
+  @media (max-width: 600px) {
+    font-size: 28px;
+    margin-top: 40px;
+  }
+}
+
+.slide {
+  padding: 16px;
+  box-sizing: border-box;
+  @media (max-width: 600px) {
+    padding: 10px;
+  }
+  .card {
+    background-color: orange;
+    background-size: cover;
+    background-position: center center;
+    min-height: 352px;
+    color: white;
+    border-radius: 8px;
+    position: relative;
+    @media (max-width: 600px) {
+      min-height: 244px;
+    }
+    &__title {
+      position: absolute;
+      font-family: $open-sans;
+      left: 0;
+      right: 0;
+      background: linear-gradient(
+        360deg,
+        rgba(0, 0, 0, 0.38) 0%,
+        rgba(0, 0, 0, 0) 100%
+      );
+      border-radius: 0px 0px 8px 8px;
+      bottom: 0;
+      padding: 0px 32px 32px;
+      h4 {
+        margin: 0;
+        font-size: 20px;
+        font-weight: bold;
+        line-height: 32px;
+        @media (max-width: 600px) {
+          font-size: 18px;
+        }
+      }
+    }
+
+    &--dots {
+      background-image: url(../img/pattern-dot.svg);
+    }
+    &--lines-vert {
+      background-image: url(../img/pattern-line-vert.svg);
+    }
+    &--lines-hor {
+      background-image: url(../img/pattern-line-hor.svg);
+    }
+
+    &--cyan {
+      background-color: $main-cyan;
+      @include drop-shadow($main-cyan);
+    }
+
+    &--darkcyan {
+      background-color: $main-darkcyan;
+      @include drop-shadow($main-darkcyan);
+    }
+
+    &--orange {
+      background-color: $main-orange;
+      @include drop-shadow($main-orange);
+    }
+  }
+}
+
+.slider-nav {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  width: 256px;
+
+  .slick-disabled {
+    opacity: 0.5;
+  }
+
+  &__prev,
+  &__next {
+    height: 48px;
+    width: 48px;
+    border-radius: 50%;
+    text-align: center;
+    border: 2px solid $main-darkcyan;
+    transition: all 0.1s ease-in-out;
+    text-align: center;
+    position: relative;
+
+    @media (max-width: 600px) {
+      display: none;
+    }
+
+    &:hover:not(.slick-disabled) {
+      cursor: pointer;
+      opacity: 0.9;
+    }
+    &:before {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      top: 0;
+      background-image: url(../img/arrow.svg);
+      background-repeat: no-repeat;
+      background-position: 50% 50%;
+    }
+
+    &:active:not(.slick-disabled) {
+      transform: translateY(2px);
+    }
+  }
+
+  &__prev {
+    &:before {
+      transform: rotateY(180deg);
+    }
+  }
+
+  .slick-dots {
+    bottom: 0;
+    position: static;
+    li {
+      margin: 0 5px;
+      width: auto;
+      height: auto;
+
+      a {
+        font-size: 0;
+        line-height: normal;
+        width: 6px;
+        height: 6px;
+        background-color: darkcyan;
+        opacity: 0.25;
+        border-radius: 50px;
+        display: inline-block;
+        margin: 0 auto;
+        vertical-align: middle;
+      }
+
+      &.slick-active a {
+        opacity: 1;
+        height: 10px;
+        width: 10px;
+      }
+    }
+  }
+}
+
+.slick-dotted.slick-slider {
+  margin-bottom: 0;
+}
+
+.slick-slide {
+  padding-bottom: 24px;
+}
+
+.slick-list {
+  margin: 0px -32px;
+}
